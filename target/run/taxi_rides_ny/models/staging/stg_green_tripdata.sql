@@ -1,6 +1,6 @@
 
 
-  create or replace view `de-zoomcamp-2023-376110`.`dbt_andrewkh`.`stg_green_tripdata`
+  create or replace view `de-zoomcamp-2023-376110`.`dbt_de_zoomcamp`.`stg_green_tripdata`
   OPTIONS()
   as 
 
@@ -8,7 +8,7 @@ with tripdata as
 (
   select *,
     row_number() over(partition by vendorid, lpep_pickup_datetime) as rn
-  from `production`.`trips_data_all`.`green_tripdata`
+  from `de-zoomcamp-2023-376110`.`trips_data_all`.`green_tripdata`
   where vendorid is not null 
 )
 select
@@ -59,9 +59,5 @@ where rn = 1
 
 
 -- dbt build --m <model.sql> --var 'is_test_run: false'
-
-
-  limit 100
-
 ;
 

@@ -3,13 +3,13 @@
 with green_data as (
     select *, 
         'Green' as service_type 
-    from `de-zoomcamp-2023-376110`.`dbt_andrewkh`.`stg_green_tripdata`
+    from `de-zoomcamp-2023-376110`.`dbt_de_zoomcamp`.`stg_green_tripdata`
 ), 
 
 yellow_data as (
     select *, 
         'Yellow' as service_type
-    from `de-zoomcamp-2023-376110`.`dbt_andrewkh`.`stg_yellow_tripdata`
+    from `de-zoomcamp-2023-376110`.`dbt_de_zoomcamp`.`stg_yellow_tripdata`
 ), 
 
 trips_unioned as (
@@ -19,7 +19,7 @@ trips_unioned as (
 ), 
 
 dim_zones as (
-    select * from `de-zoomcamp-2023-376110`.`dbt_andrewkh`.`dim_zones`
+    select * from `de-zoomcamp-2023-376110`.`dbt_de_zoomcamp`.`dim_zones`
     where borough != 'Unknown'
 )
 select 

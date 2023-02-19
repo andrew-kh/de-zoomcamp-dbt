@@ -4,7 +4,7 @@ with tripdata as
 (
   select *,
     row_number() over(partition by vendorid, tpep_pickup_datetime) as rn
-  from `production`.`trips_data_all`.`yellow_tripdata`
+  from `de-zoomcamp-2023-376110`.`trips_data_all`.`yellow_tripdata`
   where vendorid is not null 
 )
 select
@@ -55,7 +55,3 @@ from tripdata
 where rn = 1
 
 -- dbt build --m <model.sql> --var 'is_test_run: false'
-
-
-  limit 100
-
